@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  ttyd:
+    image: meienberger/ttydocker
+    container_name: ttyd
+    environment:
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+    volumes:
+      - ${DIRECTORY}:/ttyd
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - ${APP_PORT}:7681
+    restart: unless-stopped
